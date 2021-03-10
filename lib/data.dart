@@ -56,7 +56,7 @@ final List<Subtype> loadedSubtypes = [
 
 final List<Product> loadedProduct = [
   Product(
-      id: 'p1',
+      id: '1',
       typeId: 1,
       subtypeId: 1,
       title: 'Шаровой кран',
@@ -128,6 +128,14 @@ final List<Product> loadedProduct = [
       price: 202,
       imageUrl:
       'https://cdn.vseinstrumenti.ru/images/goods/krepezh/stroitelnaya-himiya/1010637/461x415/51605718.jpg'),
-
+  Product(
+      id: 'p9',
+      typeId: 1,
+      title: 'Унитаз',
+      description:
+      'Унитаз-компакт Santek БРИЗ 1.WH20.2.569',
+      price: 4490,
+      imageUrl:
+      'https://cdn.vseinstrumenti.ru/images/goods/santehnika/sanfayans/1144889/1200x800/51352973.jpg'),
 
 ];

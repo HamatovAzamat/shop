@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:shop_app/data.dart';
-import 'package:shop_app/models/type.dart';
-import 'package:shop_app/widgets/TypeItem.dart';
+import '../data.dart';
+import '../models/type.dart';
+import '../widgets/TypeItem.dart';
 
 class CategoriesScreen extends StatelessWidget {
 
@@ -12,13 +12,13 @@ class CategoriesScreen extends StatelessWidget {
         appBar: AppBar(
           centerTitle: true,
           title: Text('Каталог товаров'),
-          backgroundColor: Colors.purple,
+          backgroundColor: Colors.blue[900],
         ),
         body: GridView.builder(
           itemCount: loadedTypes.length,
           gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 1,
-            childAspectRatio: 5 / 2,
+            childAspectRatio: 8 / 2,
             crossAxisSpacing: 10.0,
             mainAxisSpacing: 20.0),
           itemBuilder: (ctx, i) => TypeItem(loadedTypes[i]),

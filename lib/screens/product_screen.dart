@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import '../models/product.dart';
+import '../models/order.dart';
 
 class ProductScreen extends StatelessWidget {
   final Product product;
@@ -9,17 +12,80 @@ class ProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[400],
+      resizeToAvoidBottomPadding: false,
+      backgroundColor: Colors.grey[350],
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.blue[900],
         actions: [
           IconButton(
               icon: Icon(
                 Icons.shopping_cart,
                 color: Colors.white,
               ),
-              onPressed: null),
+              onPressed: () {
+                TextEditingController _quantityController =
+                    TextEditingController();
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                          content: Container(
+                        width: MediaQuery.of(context).size.width / 1.2,
+                        height: MediaQuery.of(context).size.height / 3,
+                        color: Colors.white,
+                        child: Column(
+                          children: <Widget>[
+                            Text(
+                              'Введите количество товара',
+                              textAlign: TextAlign.center,
+                            ),
+                            TextField(
+                              maxLength: 3,
+                              keyboardType: TextInputType.number,
+                              inputFormatters: <TextInputFormatter>[
+                                FilteringTextInputFormatter.digitsOnly
+                              ],
+                              controller: _quantityController,
+                              decoration: InputDecoration(
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(color: Colors.black),
+                                ),
+                                hintText: '1234567890',
+                                hintStyle: TextStyle(
+                                  color: Colors.black12,
+                                ),
+                              ),
+                            ),
+                            Padding(
+                              padding: EdgeInsets.all(10),
+                              child: RaisedButton(
+                                  child: Text(
+                                    'Добавить в заказ',
+                                    style: TextStyle(
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                  color: Colors.blue[900],
+                                  onPressed: () {
+                                    int value =
+                                        int.parse(_quantityController.text);
+                                    print(value.toString());
+                                    OrderItem current = new OrderItem(
+                                        product: this.product, quantity: value);
+                                    allProducts.add(current);
+                                    Fluttertoast.showToast(
+                                      msg: 'Добавлено ${value.toString()} штук',
+                                      toastLength: Toast.LENGTH_SHORT,
+                                      gravity: ToastGravity.BOTTOM,
+                                    );
+                                  }),
+                            ),
+                          ],
+                        ),
+                      ));
+                    });
+              }),
         ],
         title: Text(
           product.title,
@@ -41,7 +107,7 @@ class ProductScreen extends StatelessWidget {
             product.description,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 15,
+              fontSize: 20,
               fontWeight: FontWeight.normal,
             ),
           ),

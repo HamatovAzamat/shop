@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import '../controller/product_overview_screen_controller.dart';
-import 'package:flutter/foundation.dart';
-import 'package:shop_app/data.dart';
+import '../data.dart';
 import '../models/product.dart';
 import '../models/type.dart';
-import '../models/sub_type.dart';
-import 'package:http/http.dart' as http;
+import '../models/order.dart' as global;
+
+
 
 import '../widgets/ProductItem.dart';
 
@@ -27,7 +27,7 @@ class ProductOverviewScreen extends StatelessWidget {
       appBar: AppBar(
         centerTitle: true,
         title: Text(type.name),
-        backgroundColor: Colors.purple,
+        backgroundColor: Colors.blue[900],
       ),
       body: ClipRRect(
         child: GridView.builder(
