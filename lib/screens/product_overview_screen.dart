@@ -1,6 +1,11 @@
-import 'package:flutter/material.dart';
-import '../controller/product_overview_screen_controller.dart';
 import '../data.dart';
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:shop_app/models/sub_type.dart';
+import 'package:shop_app/widgets/bottom_navigation_bar.dart';
+
+
 import '../models/product.dart';
 import '../models/type.dart';
 import '../models/order.dart' as global;
@@ -10,15 +15,16 @@ import '../models/order.dart' as global;
 import '../widgets/ProductItem.dart';
 
 class ProductOverviewScreen extends StatelessWidget {
+  final int bottomCurrentIndex = 1;
   final Type type;
+  final Subtype subtype;
 
-
-  ProductOverviewScreen( this.type);
+  ProductOverviewScreen(this.type, this.subtype);
 
   @override
   Widget build(BuildContext context) {
     final filtertedProducts = loadedProduct.where((product) {
-      return (product.typeId == type.id)  ;
+      return (product.typeId == type.id) && (product.subtypeId == subtype.id);
     }).toList();
 
 
@@ -47,6 +53,7 @@ class ProductOverviewScreen extends StatelessWidget {
               mainAxisSpacing: 20.0),
         ),
       ),
+      bottomNavigationBar: BottomNavigationBarWidget(bottomCurrentIndex),
     );
   }
 }

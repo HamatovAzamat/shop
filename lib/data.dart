@@ -38,7 +38,7 @@ final List<Subtype> loadedSubtypes = [
     ownBy: 2,
   ),
   Subtype(
-    name: 'Краны для кухни',
+    name: 'Аэрозоли',
     id: 2,
     ownBy: 2,
   ),

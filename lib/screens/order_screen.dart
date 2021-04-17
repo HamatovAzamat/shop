@@ -1,9 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/models/order.dart';
+import 'package:shop_app/widgets/bottom_navigation_bar.dart';
+import 'package:get/get.dart';
+
 import '../widgets/OrderWidget.dart';
 
 class OrderScreen extends StatelessWidget {
+  final int bottomCurrentIndex = 2;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,7 +27,8 @@ class OrderScreen extends StatelessWidget {
             return OrderWidget(allProducts[i]);
           },
         )
-      )
+      ),
+        bottomNavigationBar: BottomNavigationBarWidget(bottomCurrentIndex),
     );
   }
 }
