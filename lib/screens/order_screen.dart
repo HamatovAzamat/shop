@@ -4,7 +4,7 @@ import 'package:shop_app/models/order.dart';
 import 'package:shop_app/widgets/bottom_navigation_bar.dart';
 import 'package:get/get.dart';
 
-import '../widgets/OrderWidget.dart';
+import '../widgets/OrderItem.dart';
 
 class OrderScreen extends StatelessWidget {
   final int bottomCurrentIndex = 2;
